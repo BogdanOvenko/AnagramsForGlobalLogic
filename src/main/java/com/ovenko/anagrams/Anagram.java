@@ -1,13 +1,11 @@
 package com.ovenko.anagrams;
 
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Anagrams {
+public class Anagram {
 
-    public static boolean areAnagrams(String first, String second) {
+    public static boolean isAnagram(String first, String second) {
 
         if(first.length() != second.length()){
             throw new RuntimeException("Strings length is not equal. They are not anagrams.");
@@ -25,13 +23,13 @@ public class Anagrams {
                 firstCharsCount.put(firstStringCharArray[i], 1);
             } else {
                 int count = firstCharsCount.get(firstStringCharArray[i]);
-                firstCharsCount.put(firstStringCharArray[i], count++);
+                firstCharsCount.put(firstStringCharArray[i], ++count);
             }
             if(!secondCharsCount.containsKey(secondStringCharArray[i])) {
                 secondCharsCount.put(secondStringCharArray[i], 1);
             } else {
                 int count = secondCharsCount.get(secondStringCharArray[i]);
-                secondCharsCount.put(secondStringCharArray[i], count++);
+                secondCharsCount.put(secondStringCharArray[i], ++count);
             }
         }
 
