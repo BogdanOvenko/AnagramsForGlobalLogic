@@ -7,45 +7,36 @@ import java.util.Map;
 
 public class Anagrams {
 
-    public static boolean isAnagrams(String firstString, String secondString) {
+    public static boolean areAnagrams(String first, String second) {
 
-        if(firstString.length() != secondString.length()){
-            throw new RuntimeException("strings are not anagrams");
-        }
-        if(firstString.equals(secondString)){
-            return true;
+        if(first.length() != second.length()){
+            throw new RuntimeException("Strings length is not equal. They are not anagrams.");
         }
 
-        int stringsLength = firstString.length();
+        int stringsLength = first.length();
 
-        Map<Character, Integer> firstStringMap = new HashMap<Character, Integer>();
-        Map<Character, Integer> secondStringMap = new HashMap<Character, Integer>();
-        char[] firstStringCharArray = firstString.toCharArray();
-        char[] secondStringCharArray = secondString.toCharArray();
+        Map<Character, Integer> firstCharsCount = new HashMap<Character, Integer>();
+        Map<Character, Integer> secondCharsCount = new HashMap<Character, Integer>();
+        char[] firstStringCharArray = first.toCharArray();
+        char[] secondStringCharArray = second.toCharArray();
 
         for(int i = 0; i < stringsLength; i++) {
-            if(!firstStringMap.containsKey(firstStringCharArray[i])) {
-                firstStringMap.put(firstStringCharArray[i], 1);
+            if(!firstCharsCount.containsKey(firstStringCharArray[i])) {
+                firstCharsCount.put(firstStringCharArray[i], 1);
             } else {
-                int count = firstStringMap.get(firstStringCharArray[i]);
-                firstStringMap.put(firstStringCharArray[i], count++);
+                int count = firstCharsCount.get(firstStringCharArray[i]);
+                firstCharsCount.put(firstStringCharArray[i], count++);
             }
-            if(!secondStringMap.containsKey(secondStringCharArray[i])) {
-                secondStringMap.put(secondStringCharArray[i], 1);
+            if(!secondCharsCount.containsKey(secondStringCharArray[i])) {
+                secondCharsCount.put(secondStringCharArray[i], 1);
             } else {
-                int count = secondStringMap.get(secondStringCharArray[i]);
-                secondStringMap.put(secondStringCharArray[i], count++);
+                int count = secondCharsCount.get(secondStringCharArray[i]);
+                secondCharsCount.put(secondStringCharArray[i], count++);
             }
         }
 
-        return firstStringMap.equals(secondStringMap);
+        return firstCharsCount.equals(secondCharsCount);
     }
 
-    public static void checkAnagrams(String firstString, String secondString) {
-        if(isAnagrams(firstString, secondString)) {
-            System.out.println("Strings: \"" + firstString + "\" and \"" + secondString + "\" are anagrams");
-        } else {
-            System.out.println("Strings: \"" + firstString + "\" and \"" + secondString + "\" are not anagrams");
-        }
-    }
+
 }
