@@ -1,17 +1,11 @@
 package com.ovenko.anagrams;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class AnagramApp {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String first = reader.readLine();
-        String second = reader.readLine();
-        checkAnagrams(first, second);
+        checkAnagrams(args[0], args[1]);
     }
 
     public static void checkAnagrams(String first, String second) {
