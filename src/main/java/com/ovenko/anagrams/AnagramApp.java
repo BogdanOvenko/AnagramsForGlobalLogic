@@ -1,10 +1,8 @@
 package com.ovenko.anagrams;
 
-
 public class AnagramApp {
 
     public static void main(String[] args) {
-
         checkAnagrams(args[0], args[1]);
     }
 
